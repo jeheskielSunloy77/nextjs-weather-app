@@ -1,15 +1,28 @@
-import React from "react"
-
-export default function Navbar() {
+import { useState } from "react"
+const api = {
+	key: "5dbf603555d90f109af24418ed9a1281",
+	base: "https://api.openweathermap.org/data/2.5/",
+}
+export default function Navbar({ setWeather }) {
+	const [query, setQuery] = useState("")
+	function search(e) {
+		e.preventDefault()
+		fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+			.then(res => res.json())
+			.then(result => {
+				if (result.cod === "404") {
+					setQuery("")
+					alert(result.message)
+				} else {
+					setWeather(result)
+					console.log(result)
+				}
+			})
+	}
 	return (
 		<nav class="fixed top-0 w-full z-20 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
 			<div class="container flex flex-wrap justify-center items-center mx-auto">
-				{/* <a href="https://flowbite.com/" class="flex items-center">
-					<span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-						Flowbite
-					</span>
-				</a> */}
-				<form className="w-full sm:w-1/2">
+				<form onSubmit={e => search(e)} className="w-full sm:w-1/2">
 					<label
 						for="default-search"
 						class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
@@ -36,10 +49,12 @@ export default function Navbar() {
 						<input
 							type="search"
 							id="default-search"
-							class="block p-4 pl-10 w-full text-sm text-gray-800 bg-white bg-opacity-10 backdrop-blur-md drop-shadow-lg rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-300 dark:placeholder-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							class="block p-4 pl-10 w-full text-sm text-white bg-white bg-opacity-10 backdrop-blur-md drop-shadow-lg rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-300 dark:placeholder-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder-gray-100
 							placeholder="Search for location..."
 							required=""
+							onChange={e => setQuery(e.target.value)}
+							value={query}
 						/>
 						<button
 							type="submit"
