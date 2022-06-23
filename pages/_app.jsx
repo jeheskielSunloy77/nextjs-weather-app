@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }) {
 					href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
 					rel="stylesheet"
 				/>
+				<title>Weather App</title>
 			</Head>
 			<Component {...pageProps} />
 		</>
