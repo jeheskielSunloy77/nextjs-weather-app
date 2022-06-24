@@ -9,12 +9,6 @@
 	.centerAll {
 		@apply flex flex-col justify-center items-center;
 	}
-	.sectionPrimary {
-		@apply bg-white dark:bg-gray-900 py-5;
-	}
-	.sectionSecondary {
-		@apply bg-gray-100 dark:bg-gray-800 py-5;
-	}
 	.text-high {
 		@apply text-gray-900 dark:text-gray-100;
 	}
@@ -37,18 +31,6 @@ body {
 }
 h1 {
 	font-family: "Oswald", sans-serif;
-}
-.smallGrid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-	column-gap: 2px;
-	row-gap: 20px;
-}
-.largeGrid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
-	column-gap: 2px;
-	row-gap: 20px;
 }
 .Clear {
 	background-image: url("/assets/backgrounds/Clear.jpg");

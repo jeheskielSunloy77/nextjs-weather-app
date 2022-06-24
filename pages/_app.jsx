@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
 					rel="stylesheet"
 				/>
 				<title>Weather App</title>
+				<link rel="manifest" href="/manifest.json" />
 			</Head>
 			<Component {...pageProps} />
 		</>

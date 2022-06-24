@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar"
 export default function Home() {
 	const [weather, setWeather] = useState()
 	console.log(weather)
-	const dateBuilder = d => {
+	function dateBuilder(d) {
 		let months = [
 			"January",
 			"February",
@@ -80,20 +80,32 @@ export default function Home() {
 			return "Beware of unpredictable weather"
 		}
 	}
+	function getBackground(weather) {
+		let time = ""
+
+		if (weather.weather[0].icon.includes("n")) {
+			time = "night"
+		} else {
+			time = "day"
+		}
+		return `url('/assets/backgrounds/${time}/${getWeatherIcon(
+			weather.weather[0].main
+		)}.jpg`
+	}
+
 	return (
 		<>
 			<Navbar setWeather={setWeather} />
 			<div
-				className={
-					weather
-						? `${getWeatherIcon(
-								weather.weather[0].main
-						  )} bg-cover bg-no-repeat h-screen`
-						: "bg-[url('https://img.freepik.com/free-vector/multicolored-abstract-background_23-2148463672.jpg?w=2000')] bg-cover bg-no-repeat h-screen"
-				}
+				style={{
+					backgroundImage: weather
+						? getBackground(weather)
+						: "url('/assets/backgrounds/default.png')",
+				}}
+				className="bg-cover bg-no-repeat h-screen"
 			>
 				<div className="myContainer h-full relative">
-					<div className="flex p-4 sm:p-10 rounded shadow-xl bg-white bg-opacity-40 backdrop-blur-md drop-shadow-lg absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:max-w-md max-h-fit">
+					<div className="flex p-4 sm:p-10 rounded shadow-2xl bg-white bg-opacity-40 backdrop-blur-md drop-shadow-lg absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:max-w-md max-h-fit">
 						{weather ? (
 							<>
 								<div className=" w-1/2">
@@ -118,6 +130,7 @@ export default function Home() {
 											)}.png`}
 											width="70px"
 											height="70px"
+											alt=""
 										></Image>
 										<span className="text-4xl flex text-high ml-2">
 											{Math.round(weather.main.temp)}

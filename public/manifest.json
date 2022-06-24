@@ -1,0 +1,36 @@
+{
+    "short_name": "WeatheApp",
+    "name": "nextjs-weather-app",
+    "description": "A weather app build with NEXT.js",
+    "icons": [
+      {
+        "src": "/assets/logos/icon.png",
+        "type": "image/png",
+        "sizes": "180x180"
+      },{
+        "src": "/assets/logos/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },{
+        "src": "/assets/logos/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },{
+        "src": "/assets/logos/icon-maskable-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose":"maskable"
+
+      },{
+        "src": "/assets/logos/icon-maskable-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose":"maskable"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000"
+  }
