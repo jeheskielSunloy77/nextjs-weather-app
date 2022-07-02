@@ -51,7 +51,7 @@ export default function Navbar({ setWeather }) {
 							id="default-search"
 							className="block p-4 pl-10 w-full text-sm text-white bg-white bg-opacity-10 backdrop-blur-md shadow-2xl drop-shadow-lg rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-300 dark:placeholder-gray-600 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder-gray-100
-							placeholder="Search htmlFor location..."
+							placeholder="Search For Location..."
 							required=""
 							onChange={e => setQuery(e.target.value)}
 							value={query}
